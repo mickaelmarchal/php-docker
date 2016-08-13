@@ -13,6 +13,7 @@ services:
     build: ./conf/apache-php
     ports:
       - '12345:80'
+      - '12346:443'
     volumes:
       - ./src:/var/www/html
     depends_on:
@@ -26,7 +27,7 @@ services:
       - PHP_UPLOAD_MAX_FILESIZE=100M
     restart: always
     ports:
-      - 12346:80
+      - 12347:80
     volumes:
       - pma-sessions:/sessions
     links:
