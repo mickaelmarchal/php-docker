@@ -27,26 +27,6 @@ To reach those domains from the host, please ensure that your `/etc/hosts` file 
 127.0.0.1   project2.local
 ```
 
-#### SSL Certificates
-
-The platform comes with a wildcard, self-signed SSL certificate matching `*.local`. The certificate and the associated key are installed in `/etc/apache2/ssl/ssl-cert.key` and `/etc/apache2/ssl/ssl-cert.crt`.
-
-Example: to use the certificate in a VirtualHost :
-
-```
-<VirtualHost _default_:443>
-    ServerName project1.local
-
-    SSLEngine on
-    SSLCertificateFile    /etc/apache2/ssl/ssl-cert.crt
-    SSLCertificateKeyFile /etc/apache2/ssl/ssl-cert.key
-
-    #...
-
-</VirtualHost>
-```
-
-
 #### phpMyAdmin
 
 phpMyAdmin can be reached on http://localhost:12346
@@ -58,7 +38,7 @@ MySQL credentials :
 ## TODO
 
 * ~~Apache VirtualHosts~~
-* ~~SSL~~
+* SSL
 * Memcache
 * SQL migrations
 * Logs management
