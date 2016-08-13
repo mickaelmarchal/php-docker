@@ -29,16 +29,22 @@ RUN apt-get update && apt-get install -y \
 #ENV PATH $PATH:$COMPOSER_HOME/vendor/bin/
 #USER root
 
-# Inject config files
+
+# PHP config
 COPY php.ini /usr/local/etc/php/
 
+# Apache SSL certificates
+RUN mkdir /etc/apache2/ssl
+COPY ssl-cert.key /etc/apache2/ssl/ssl-cert.key
+COPY ssl-cert.crt /etc/apache2/ssl/ssl-cert.crt
+
+# Apache virtual hosts
 RUN rm -rf /etc/apache2/sites-enabled/* && rm -rf /etc/apache2/sites-available/*
 COPY vhosts.conf /etc/apache2/sites-available/000-vhost.conf
 RUN a2ensite 000-vhost.conf
 
-
 # Expose http and https ports
 EXPOSE 80 443
 
-# CMD ["bash"]
+#CMD ["bash"]
 CMD ["apache2-foreground"]
