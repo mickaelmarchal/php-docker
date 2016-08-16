@@ -33,7 +33,8 @@ RUN apt-get update && apt-get install -y \
 # PHP config
 COPY php.ini /usr/local/etc/php/
 
-# Apache SSL certificates
+# Apache SSL config and certificates
+RUN a2enmod ssl
 RUN mkdir /etc/apache2/ssl
 COPY ssl-cert.key /etc/apache2/ssl/ssl-cert.key
 COPY ssl-cert.crt /etc/apache2/ssl/ssl-cert.crt
@@ -46,5 +47,4 @@ RUN a2ensite 000-vhost.conf
 # Expose http and https ports
 EXPOSE 80 443
 
-#CMD ["bash"]
 CMD ["apache2-foreground"]
