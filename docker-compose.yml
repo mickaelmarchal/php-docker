@@ -1,38 +1,54 @@
 version: "2"
 services:
 
+  php:
+    build: ./conf/php
+    container_name: php
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./conf/php/dev-tools:/var/www/html/dev-tools
+      - ./src/exampleproject:/var/www/html/exampleproject
+
+    depends_on:
+      - mysql
+      - mailcatcher
+
   mysql:
     build: ./conf/mysql
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
     restart: always
     volumes:
       - db:/var/lib/mysql
-
-  apache-php:
-    build: ./conf/apache-php
     ports:
-      - '12345:80'
-      - '12346:443'
-    volumes:
-      - ./src:/var/www/html
-    depends_on:
-      - mysql
+      - '3306:3306'
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
     environment:
       - PMA_USER=root
       - PMA_PASSWORD=password
-      - PHP_UPLOAD_MAX_FILESIZE=100M
     restart: always
     ports:
-      - 12347:80
+      - 8888:80
     volumes:
-      - pma-sessions:/sessions
+      - /sessions
+    depends_on:
+      - mysql
     links:
       - mysql:db
 
+  mailcatcher:
+    image: schickling/mailcatcher
+    container_name: mailcatcher
+    restart: always
+    ports:
+      - 1025:1025
+      - 1080:1080
+
 volumes:
   db:
-  pma-sessions:
