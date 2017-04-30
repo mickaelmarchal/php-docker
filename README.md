@@ -112,7 +112,6 @@ Composer is included, just run `composer` in the PHP container.
 
 Other installed utilities:
 * PHPUnit
-* Phing
 * PHPDox
 
 
