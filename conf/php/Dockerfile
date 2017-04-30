@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
   pdo_mysql \
   mysqli \
   gd \
+  xsl \
 && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
