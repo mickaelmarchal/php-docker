@@ -18,12 +18,12 @@ RUN cd $HOME &&\
     mv composer.phar /usr/local/bin/composer
 
 # Install phing, PHPUnit and PHPDocx with user "dev"
-#USER dev
-#RUN composer global require "phing/phing=2.*" &&\
-#    composer global require "phpunit/phpunit=*" &&\
-#    composer global require 'theseer/phpdox=@stable'
-#ENV PATH $PATH:$COMPOSER_HOME/vendor/bin/
-#USER root
+USER dev
+RUN composer global require "phing/phing=2.*" &&\
+    composer global require "phpunit/phpunit=*" &&\
+    composer global require 'theseer/phpdox=@stable'
+ENV PATH $PATH:$COMPOSER_HOME/vendor/bin/
+USER root
 
 
 # Install PHP config

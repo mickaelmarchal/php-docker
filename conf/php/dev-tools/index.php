@@ -35,16 +35,6 @@
     <li><a href="http://localhost:8888">phpMyAdmin</a></li>
     <li><a href="phpinfo.php">phpinfo</a></li>
     <li><a href="http://localhost:1080">Mailcatcher</a></li>
-    <!-- <li>
-      phpMetrics
-      <ul>
-        <li><a href="phpmetrics-glh.html">GLH</a></li>
-        <li><a href="phpmetrics-extranet.html">Extranet</a></li>
-        <li><a href="phpmetrics-mobile-app-backend.html">Mobile app backend</a></li>
-        <li><a href="phpmetrics-library.html">Core / Library</a></li>
-        <li><a href="phpmetrics-models.html">Core / Models</a></li>
-      </ul>
-    </li> -->
   </ul>
 
   <h2>Documentation</h2>
